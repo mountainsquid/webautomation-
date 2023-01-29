@@ -1,0 +1,17 @@
+# Will automatically open up firefox and visit CNN and Wikipedia for you
+# This will save you 3 seconds of your life. 
+
+from selenium import webdriver
+
+# create a new Firefox browser instance
+browser = webdriver.Firefox()
+
+# open new tabs
+browser.execute_script("window.open('https://www.cnn.com', '_blank');")
+browser.execute_script("window.open('https://www.wikipedia.org', '_blank');")
+
+# switch to the first tab
+browser.switch_to.window(browser.window_handles[0])
+
+# switch to the second tab
+browser.switch_to.window(browser.window_handles[1])
