@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <script src="https://example.com/script.js"></script>
+
+    <script>
+      // Your JavaScript code goes here
+
+      setInterval(() => {
+  const date = new Date();
+  document.querySelector("#time").innerHTML = date.toLocaleTimeString();
+}, 1000);
+
+fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+.then(res => res.json())
+.then(data => {
+  document.querySelector("#btc").innerHTML = "$" + data.bpi.USD.rate;
+});
+
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd")
+  .then(res => res.json())
+  .then(data => {
+    document.querySelector("#eth").innerHTML = "$" + data.ethereum.usd;
+  });
+
+
+
+function updateCountdown() {
+        let today = new Date();
+        let endOfYear = new Date(today.getFullYear(), 11, 31);
+        let daysLeft = (endOfYear - today) / (1000 * 60 * 60 * 24);
+        document.querySelector("#countdown").innerHTML = `${Math.ceil(daysLeft)} days left in this year`;
+      }
+      setInterval(updateCountdown, 1000);
+
+
+
+</script>
+
+<style>
+
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: white;
+  font-size: 48px;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff;
+}
+
+#btc {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+}
+
+#eth {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+}
+
+#time {
+  color: #ffff00;
+  text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00, 0 0 40px #ffff00, 0 0 50px #ffff00, 0 0 60px #ffff00, 0 0 70px #ffff00;
+}
+
+#date {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff;
+}
+
+#countdown {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff;
+}
+
+# scrolling text at the bottom
+
+.scrolling-text {
+        font-size: 24px;
+        color: #00FF00;
+        animation: scrolling-text 10s linear infinite;
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+      }
+      @keyframes scrolling-text {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-100%);
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+
+
+    <div class="prices">
+
+      <h1>GOOD MORNING FRIEND!</h1>
+      
+      <div class="price">  <br>
+      <div id="btc"></div> <br>
+      <div class="price">  <br>
+      <div id="eth"></div> <br>
+      <div class="price">  <br>
+      <div id="time"></div> <br>
+      <p id="countdown" class="scrolling-text"></p>
+      
+
+
+      </div>
+    </div>
+
+ 
+
+  </body>
+</html>
