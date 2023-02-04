@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser and Time Detection</title>
+</head>
+<body>
+  <p id="browser"></p>
+  <p id="time"></p>
+
+  <script>
+    // Get the browser name and version
+    var ua = navigator.userAgent,
+      browserName,
+      browserVersion;
+    if (ua.indexOf("Chrome") >= 0) {
+      browserName = "Google Chrome";
+      browserVersion = ua.substring(ua.indexOf("Chrome") + 7, ua.indexOf(" Safari"));
+    } else if (ua.indexOf("Firefox") >= 0) {
+      browserName = "Mozilla Firefox";
+      browserVersion = ua.substring(ua.indexOf("Firefox") + 8);
+    } else if (ua.indexOf("MSIE") >= 0) {
+      browserName = "Internet Explorer";
+      browserVersion = ua.substring(ua.indexOf("MSIE") + 5, ua.indexOf("; Windows"));
+    } else if (ua.indexOf("Safari") >= 0 && ua.indexOf("Chrome") < 0) {
+      browserName = "Apple Safari";
+      browserVersion = ua.substring(ua.indexOf("Version") + 8, ua.indexOf(" Safari"));
+    } else {
+      browserName = "Unknown";
+      browserVersion = "Unknown";
+    }
+
+    // Display the browser name and version
+    document.getElementById("browser").innerHTML = "Browser: " + browserName + " Version: " + browserVersion;
+
+    // Get the local time
+    var currentTime = new Date();
+    document.getElementById("time").innerHTML = "Local Time: " + currentTime.toLocaleTimeString();
+  </script>
+</body>
+</html>
