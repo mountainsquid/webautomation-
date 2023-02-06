@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        .todo {
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+        }
+  
+        .checkmark {
+          cursor: pointer;
+          font-size: 24px;
+          margin-right: 10px;
+        }
+  
+        .todo-text {
+          text-decoration: none;
+          font-size: 18px;
+          color: #00ff00;
+        }
+  
+        .completed {
+          text-decoration: line-through;
+          color: #ff00ff;
+        }
+  
+        input[type="text"] {
+          padding: 10px;
+          font-size: 18px;
+          margin-top: 10px;
+          border-radius: 5px;
+          border: none;
+          box-shadow: 0 0 10px #ff00ff;
+          color: #00ff00;
+        }
+  
+        button {
+          padding: 10px 20px;
+          background-color: #00ff00;
+          border-radius: 5px;
+          border: none;
+          box-shadow: 0 0 10px #ff00ff;
+          color: #ff00ff;
+          font-size: 18px;
+          margin-top: 10px;
+          cursor: pointer;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do Checklist</h1>
+      <div id="todos"></div>
+      <input type="text" id="input-todo" placeholder="Add a to-do item">
+      <button id="add-todo">Add</button>
+    </div>
+
+    <script>
+      const todosDiv = document.querySelector("#todos");
+      const inputTodo = document.querySelector("#input-todo");
+      const addTodoBtn = document.querySelector("#add-todo");
+
+      addTodoBtn.addEventListener("click", () => {
+        const todoText = inputTodo.value;
+        if (todoText) {
+          const todo = createTodo(todoText);
+          todosDiv.appendChild(todo);
+          inputTodo.value = "";
+        }
+      });
+
+      function createTodo(text) {
+        const todo = document.createElement("div");
+        todo.classList.add("todo");
+
+        const checkmark = document.createElement("span");
+        checkmark.classList.add("checkmark");
+        checkmark.innerHTML = "&#10003;";
+        checkmark.addEventListener("click", () => {
+          const todoText = todo.querySelector(".todo-text");
+          todoText.classList.toggle("completed");
+        });
+
+        const todoText = document.createElement("span");
+        todoText.classList.add("todo-text");
+        todoText.innerHTML = text;
+
+        todo.appendChild(checkmark);
+        todo.appendChild(todoText);
+
+        return todo;
+      }
+    </script>
+  </body>
+</html>
