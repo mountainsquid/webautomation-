@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Cost Per Use Calculator</title>
+  </head>
+  <body>
+    <h1>Cost Per Use Calculator</h1>
+
+    <form>
+      Price of Item: <input type="text" id="price"><br><br>
+      Months Used: <input type="text" id="months"><br><br>
+      <button type="button" onclick="calculateCostPerUse()">Calculate Cost Per Use</button>
+    </form>
+    <br><br>
+    Cost Per Day: $<span id="costPerDay"></span>
+
+    <script>
+      function calculateCostPerUse() {
+        const price = document.getElementById("price").value;
+        const months = document.getElementById("months").value;
+        const days = months * 30;
+        const costPerDay = (price / days).toFixed(2);
+        document.getElementById("costPerDay").innerHTML = costPerDay;
+      }
+    </script>
+  </body>
+</html>
