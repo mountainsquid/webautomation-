@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Time Saved Calculator</title>
+  </head>
+  <body>
+    <h1>Time Saved Calculator</h1>
+
+    <form>
+      Length of Video (minutes): <input type="text" id="length"><br><br>
+      Speed of YouTube Video:
+      <select id="speed">
+        <option value="1.5">1.5x</option>
+        <option value="1.75">1.75x</option>
+        <option value="2">2x</option>
+      </select><br><br>
+      <button type="button" onclick="calculateTimeSaved()">Calculate Time Saved</button>
+    </form>
+    <br><br>
+    Time Saved: <span id="timeSaved"></span>
+
+    <script>
+      function calculateTimeSaved() {
+        const length = document.getElementById("length").value;
+        const speed = document.getElementById("speed").value;
+        const timeSaved = (length / speed - length).toFixed(2);
+        document.getElementById("timeSaved").innerHTML = timeSaved + " minutes";
+      }
+    </script>
+  </body>
+</html>
