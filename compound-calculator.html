@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Compound Interest Calculator</title>
+  </head>
+  <body>
+    <h1>Compound Interest Calculator</h1>
+
+    <form>
+      Principle: <input type="text" id="principle"><br><br>
+      Interest Rate: <input type="text" id="rate"><br><br>
+      Months: <input type="text" id="months"><br><br>
+      <button type="button" onclick="calculateInterest()">Calculate Interest</button>
+    </form>
+    <br><br>
+    Total: <span id="total"></span>
+
+    <script>
+      function calculateInterest() {
+        const principle = document.getElementById("principle").value;
+        const rate = document.getElementById("rate").value / 100 / 12;
+        const months = document.getElementById("months").value;
+        const total = principle * Math.pow(1 + rate, months);
+        document.getElementById("total").innerHTML = total.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
