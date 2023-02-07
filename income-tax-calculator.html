@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Lifetime Tax Calculator</title>
+  </head>
+  <body>
+    <h1>Lifetime Tax Calculator</h1>
+    <p>Enter your annual income: <input type="text" id="income"></p>
+    <p>Tax rate 20%: <input type="checkbox" id="tax20"></p>
+    <p>Tax rate 40%: <input type="checkbox" id="tax40"></p>
+    <p>Tax rate 50%: <input type="checkbox" id="tax50"></p>
+    <p><button onclick="calculateTax()">Calculate Tax</button></p>
+    <p id="output"></p>
+    <script>
+      function calculateTax() {
+        const income = parseInt(document.getElementById("income").value);
+        let taxRate = 0;
+        if (document.getElementById("tax20").checked) {
+          taxRate = 0.2;
+        } else if (document.getElementById("tax40").checked) {
+          taxRate = 0.4;
+        } else if (document.getElementById("tax50").checked) {
+          taxRate = 0.5;
+        }
+        const totalTax = income * taxRate * 40;
+        document.getElementById("output").innerHTML = 
+          `You will pay a total of $${totalTax.toFixed(2)} in income tax during a 40 year working period.`;
+      }
+    </script>
+  </body>
+</html>
