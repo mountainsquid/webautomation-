@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>Budget Calculator</title>
+</head>
+<body>
+  <h1>Budget Calculator</h1>
+  <p>Enter your daily expense: <input type="number" id="dailyExpense"></p>
+  <button id="calculateButton">Calculate</button>
+  <p>Total amount spent every year: <span id="output"></span></p>
+  <script>
+    const calculateButton = document.getElementById("calculateButton");
+    const dailyExpense = document.getElementById("dailyExpense");
+    const output = document.getElementById("output");
+
+    calculateButton.addEventListener("click", function() {
+      const total = dailyExpense.value * 365;
+      output.innerHTML = total;
+    });
+  </script>
+</body>
+</html>
