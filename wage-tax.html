@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Wage Calculator</title>
+</head>
+<body>
+  <h1>Wage Calculator</h1>
+  <p>Enter your hourly wage: <input type="number" id="hourlyWage"></p>
+  <p>Enter the number of days worked per week: <input type="number" id="daysWorkedPerWeek"></p>
+  <p>Select the tax rate: 
+    <input type="radio" name="tax" value="20" id="tax20">
+    <label for="tax20">20%</label>
+    <input type="radio" name="tax" value="30" id="tax30">
+    <label for="tax30">30%</label>
+    <input type="radio" name="tax" value="40" id="tax40">
+    <label for="tax40">40%</label>
+  </p>
+  <button id="calculateButton">Calculate</button>
+  <p>Total amount made per year (including tax): <span id="output"></span></p>
+  <script>
+    const calculateButton = document.getElementById("calculateButton");
+    const hourlyWage = document.getElementById("hourlyWage");
+    const daysWorkedPerWeek = document.getElementById("daysWorkedPerWeek");
+    const tax20 = document.getElementById("tax20");
+    const tax30 = document.getElementById("tax30");
+    const tax40 = document.getElementById("tax40");
+    const output = document.getElementById("output");
+
+    calculateButton.addEventListener("click", function() {
+      const totalWorkingDaysPerYear = daysWorkedPerWeek.value * 52;
+      const totalWage = totalWorkingDaysPerYear * hourlyWage.value * 8;
+
+      let taxRate = 0;
+      if (tax20.checked) {
+        taxRate = 0.2;
+      } else if (tax30.checked) {
+        taxRate = 0.3;
+      } else if (tax40.checked) {
+        taxRate = 0.4;
+      }
+      const totalWageWithTax = totalWage - (totalWage * taxRate);
+      output.innerHTML = totalWageWithTax;
+    });
+  </script>
+</body>
+</html>
