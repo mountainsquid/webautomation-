@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      .timer {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 50px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      button {
+        font-size: 24px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pomodoro Timer</h1>
+    <div class="timer">
+      <span id="minutes">20</span>:<span id="seconds">00</span>
+    </div>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="reset">Reset</button>
+    </div>
+    <script>
+      const minutesDisplay = document.querySelector("#minutes");
+      const secondsDisplay = document.querySelector("#seconds");
+      const startBtn = document.querySelector("#start");
+      const resetBtn = document.querySelector("#reset");
+
+      let countdown;
+
+      function startTimer() {
+        const minutes = 20;
+        let remainingSeconds = minutes * 60;
+        clearInterval(countdown);
+        countdown = setInterval(() => {
+          remainingSeconds--;
+          minutesDisplay.textContent = Math.floor(remainingSeconds / 60);
+          secondsDisplay.textContent = remainingSeconds % 60;
+          if (remainingSeconds <= 0) {
+            clearInterval(countdown);
+            alert("Time's up!");
+          }
+        }, 1000);
+      }
+
+      function resetTimer() {
+        clearInterval(countdown);
+        minutesDisplay.textContent = 20;
+        secondsDisplay.textContent = "00";
+      }
+
+      startBtn.addEventListener("click", startTimer);
+      resetBtn.addEventListener("click", resetTimer);
+    </script>
+  </body>
+</html>
