@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Notepad</title>
+    <style>
+      #textarea {
+        width: 80%;
+        height: 80vh;
+        margin: auto;
+        display: block;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      #save-button {
+        width: 20%;
+        height: 10vh;
+        margin: auto;
+        display: block;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="textarea"></textarea>
+    <br />
+    <button id="save-button">Save</button>
+
+    <script>
+      const textarea = document.getElementById("textarea");
+      const saveButton = document.getElementById("save-button");
+
+      saveButton.addEventListener("click", function () {
+        const text = textarea.value;
+
+        const blob = new Blob([text], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "notes.txt";
+        link.click();
+      });
+    </script>
+  </body>
+</html>
